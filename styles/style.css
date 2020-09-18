@@ -1,0 +1,17 @@
+#navigation{
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 2%;
+}
+
+#navigation a{
+    text-decoration: none;
+    color: #333333;
+    margin-right: 2%;
+    padding: 1%;
+    background-color: #f4f4f4;
+    width: 150px;
+    display: inline-block;
+    text-align: CENTER;
+    border-radius: 3px;
+    box-shadow: 2px 3px 5px rgba(0,0,0,0.12);
+}
