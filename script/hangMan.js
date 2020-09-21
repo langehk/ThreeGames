@@ -44,7 +44,7 @@ let listOfWords = [
 
 let hangManWord = document.getElementById("hangManWord");
 let displayGuesses = document.getElementById("guesses");
-let word; // Ordet det skal gættes
+let word; // Ordet der skal gættes
 let wordArray; // Ordet i et array
 let guess; // Vores gæt
 
