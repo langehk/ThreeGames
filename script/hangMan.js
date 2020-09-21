@@ -154,7 +154,6 @@ function checkLetter(element) {
     alert("You've already used the letter: " + guess);
     return null;
   }
-
   /**
    * Checker om bogstavet findes i vores array.
    * + Erstatter _ med det indtastede bogstav (guess)
@@ -165,13 +164,13 @@ function checkLetter(element) {
     }
   }
 
+  /**
+   * Hvis bogstavet ikke findes i vores array, mister man et liv.
+   */
   if (!wordArray.includes(guess)) {
     currentLives--;
   }
-
-  guesses.push(guess); //Smider vores get i en liste.  /** Denne giver en bug, som laver 2x tastatur. */
-
+  guesses.push(guess);
   setText("hangManWord", globalHiddenArray);
-
   updateLives();
 }
