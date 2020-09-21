@@ -48,7 +48,7 @@ let wordArray; // Ordet i et array
 let guess; // Vores gæt
 let guesses = []; // Liste af gæt
 let currentLives; // Vores liv
-let globalHiddenArray;
+let globalHiddenArray; // Brugt til at opdatere vores skjulte "array"
 
 // Eventlistener new game
 document.getElementById("playBtn").addEventListener("click", newGame);
@@ -137,13 +137,8 @@ Henter innerHTML på den knap som er blevet trykket.
 Og returnerer bogstavet.
 - Check om array indeholder bogstavet som vi trykker på
 */
-
 function checkLetter(element) {
   let guess = element.srcElement.innerHTML;
-
-  //hiddenArray = hangManWord.innerHTML;
-
-  //let wordToGuess = document.getElementById("wordToGuess").innerText.split(" "); // Henter element _ _ _ _ _
 
   for (let i = 0; i < wordArray.length; i++) {
     // HENTER INDEX UD HVOR DEN ER === VORES GUESS
