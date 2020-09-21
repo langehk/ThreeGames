@@ -144,7 +144,7 @@ function checkLetter(element) {
       console.log(wordArray);
 
       wordToGuess.splice(i, 1, guess); // Erstatter _ med det bogstav vi har indtastet.
-      guesses.push(guess); //Smider vores gæt i en liste. - Mangler at blive printet.
+      guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
     }
     hangManWord.innerHTML = wordToGuess;
     console.log(wordToGuess);
