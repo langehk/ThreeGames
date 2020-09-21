@@ -64,7 +64,9 @@ function setText(id, newvalue) {
 // Returnerer et tilfældigt ord fra vores Array.
 // Skal laves så man kun kan trykke en gang. (Opderete et bestemt element?)
 function newGame() {
+  guesses = [];
   let randomWord = listOfWords[Math.floor(Math.random() * listOfWords.length)];
+
   convertToLetterArray(randomWord);
   currentLives = 10;
   updateLives();
@@ -113,7 +115,7 @@ function updateLives() {
 /*
 Laver en <ul> med alle input på tastaturet.
 */
-function keyboard() {
+function loadKeyboard() {
   myKeyboard = document.getElementById("keyboard");
   letters = document.createElement("ul");
 
@@ -128,13 +130,16 @@ function keyboard() {
   }
 }
 
-keyboard(); // Load keyboard
+loadKeyboard();
 
 /*
-Event listener på alphabet buttons...
-SER PÅ ALLE I VORES "Alphabet" og laver en eventlistener, når vi klikker på en button "letter."
+Event listener på alphabet buttons.
+Ser på alle buttons under alphabet "Alphabet" og laver en eventlistener, når vi klikker på en button.
 */
-document.getElementById("alphabet").addEventListener("click", checkLetter);
+document.getElementById("alphabet").addEventListener("click", checkLetter); // FEJL !!!
+
+// Et problem der kan snakkes om - Event listener som kun rammer en button.
+// Hvis vi har "alphabet" og ikke "letters" vil vi også ramme vores "spilleplade"
 
 /*
 Henter innerHTML på den knap som er blevet trykket.
@@ -142,12 +147,21 @@ Og returnerer bogstavet.
 - Check om array indeholder bogstavet som vi trykker på
 */
 function checkLetter(element) {
-  let guess = element.srcElement.innerHTML;
+  let guess = element.srcElement.innerText;
 
+  //Checker om bogstavet allerede er tastet i forvejen..
+  if (guesses.includes(guess)) {
+    alert("You've already used the letter: " + guess);
+    return null;
+  }
+
+  /**
+   * Checker om bogstavet findes i vores array.
+   * + Erstatter _ med det indtastede bogstav (guess)
+   */
   for (let i = 0; i < wordArray.length; i++) {
-    // HENTER INDEX UD HVOR DEN ER === VORES GUESS
     if (wordArray[i] === guess) {
-      globalHiddenArray.splice(i, 1, guess); // Erstatter _ med det bogstav vi har indtastet.
+      globalHiddenArray.splice(i, 1, guess);
     }
   }
 
@@ -155,14 +169,9 @@ function checkLetter(element) {
     currentLives--;
   }
 
-  guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
+  guesses.push(guess); //Smider vores get i en liste.  /** Denne giver en bug, som laver 2x tastatur. */
 
   setText("hangManWord", globalHiddenArray);
 
-  // Hvis ordet ikke indeholder bogstavet, skal der trækkes 1 fra lives
-  // + skal tilføjes til en liste over anvendte bogstaver. som skal vises (rød skrift??)
-
   updateLives();
-
-  return guess;
 }
