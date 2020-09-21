@@ -53,7 +53,7 @@ let globalHiddenArray; // Brugt til at opdatere vores skjulte "array"
 // Eventlistener new game
 document.getElementById("playBtn").addEventListener("click", newGame);
 
-//Function til at sætte værdi af et element.
+//Function til at sætte værdi af et element. (Opdaterer teksten, når vi gætter bogstaver)
 function setText(id, newvalue) {
   var s = document.getElementById(id);
   s.innerHTML = newvalue;
@@ -147,7 +147,12 @@ function checkLetter(element) {
     }
   }
 
+  if (!wordArray.includes(guess)) {
+    currentLives--;
+  }
+
   guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
+
   setText("hangManWord", globalHiddenArray);
 
   // Hvis ordet ikke indeholder bogstavet, skal der trækkes 1 fra lives
