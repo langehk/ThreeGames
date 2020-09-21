@@ -54,7 +54,7 @@ let correctGuessCount; //Antallet af gæt? Giver det samme som liv?
 // Skal laves så man kun kan trykke en gang. (Opderete et bestemt element?)
 function newGame() {
   let randomWord = listOfWords[Math.floor(Math.random() * listOfWords.length)];
-  word = randomWord;
+
   convertToLetterArray(randomWord);
   currentLives = 10;
   updateLives();
@@ -146,6 +146,7 @@ function checkLetter(element) {
       wordToGuess.splice(i, 1, guess); // Erstatter _ med det bogstav vi har indtastet.
       guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
     }
+
     hangManWord.innerHTML = wordToGuess;
     console.log(wordToGuess);
   }
@@ -153,7 +154,6 @@ function checkLetter(element) {
   // Hvis ordet ikke indeholder bogstavet, skal der trækkes 1 fra lives
   // + skal tilføjes til en liste over anvendte bogstaver. som skal vises (rød skrift??)
 
-  currentLives--;
   updateLives();
 
   return guess;
