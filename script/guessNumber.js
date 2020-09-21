@@ -3,7 +3,6 @@
    var y = Math.floor(Math.random() * 1000 + 1);
    console.log(y);
 
-
    var guess = 0;
 
    // Functions

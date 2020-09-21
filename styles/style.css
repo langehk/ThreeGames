@@ -41,8 +41,8 @@ main {
 
 #result {
   display: none;
+}
+#result, #guesses {
   margin: 0;
   padding-top: 20px;
-
-
 }
