@@ -1,3 +1,11 @@
+h1, h2, h3, p, input, label, button {
+  font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  padding: 30px;
+}
+
 #navigation{
     font-family: 'Quicksand', sans-serif;
     margin-top: 2%;
@@ -14,4 +22,27 @@
     text-align: CENTER;
     border-radius: 3px;
     box-shadow: 2px 3px 5px rgba(0,0,0,0.12);
+}
+
+/* guess a number */
+#form {
+  background-color: #f4f4f4;
+  margin-top: 30px;
+  width: 400px;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px rgba(0,0,0,0.12);
+  padding-bottom: 20px;
+  padding: 20px;
+}
+
+ #tryAgainForm {
+  display: none;
+}
+
+#result {
+  display: none;
+  margin: 0;
+  padding-top: 20px;
+
+
 }
