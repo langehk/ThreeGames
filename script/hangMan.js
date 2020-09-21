@@ -31,30 +31,38 @@ let alphabet = [
 ];
 
 let listOfWords = [
-  "Eddike",
-  "Tegnefilm",
-  "Pirater",
-  "International",
-  "Plateau",
-  "Paradis",
-  "Vagabond",
-  "Betaling",
-  "Bagagerum",
+  "eddike",
+  "tegnefilm",
+  "pirater",
+  "international",
+  "plateau",
+  "paradis",
+  "vagabond",
+  "betaling",
+  "bagagerum",
 ];
 
-let hangManWord = document.getElementById("wordToGuess");
+let hangManWord = document.getElementById("hangManWord");
 let word; // Ordet det skal gættes
 let wordArray; // Ordet i et array
 let guess; // Vores gæt
 let guesses = []; // Liste af gæt
 let currentLives; // Vores liv
-let correctGuessCount; //Antallet af gæt? Giver det samme som liv?
+let globalHiddenArray;
+
+// Eventlistener new game
+document.getElementById("playBtn").addEventListener("click", newGame);
+
+//Function til at sætte værdi af et element.
+function setText(id, newvalue) {
+  var s = document.getElementById(id);
+  s.innerHTML = newvalue;
+}
 
 // Returnerer et tilfældigt ord fra vores Array.
 // Skal laves så man kun kan trykke en gang. (Opderete et bestemt element?)
 function newGame() {
   let randomWord = listOfWords[Math.floor(Math.random() * listOfWords.length)];
-
   convertToLetterArray(randomWord);
   currentLives = 10;
   updateLives();
@@ -66,26 +74,23 @@ Derefter laver den enten en "-" eller "_" ud fra hvad ordet indeholder.
 Dette bliver smidt ind i vores "wordToGuess".
 */
 function convertToLetterArray(word) {
-  guess = document.createElement("ul");
-
   let letterArray = [];
+  let hiddenArray = [];
 
   for (let i = 0; i < word.length; i++) {
     letterArray.push(word.charAt(i));
-    let textNode = document.createTextNode("- ");
-    let lowerTextNode = document.createTextNode(" _ ");
 
     if (letterArray[i] === "-") {
-      //guess.innerHTML = "- ";
-      guess.appendChild(textNode);
+      hiddenArray.push("-");
     } else {
-      //guess.innerHTML = "_";
-      guess.appendChild(lowerTextNode);
+      hiddenArray.push("_");
     }
-
-    hangManWord.appendChild(guess);
   }
-  wordArray = letterArray;
+
+  wordArray = letterArray; // ["P", "E", "R"];
+  setText("hangManWord", hiddenArray);
+  globalHiddenArray = hiddenArray;
+  return hiddenArray; // ["_", "_", "_"];
 }
 
 /*
@@ -136,20 +141,19 @@ Og returnerer bogstavet.
 function checkLetter(element) {
   let guess = element.srcElement.innerHTML;
 
-  let wordToGuess = document.getElementById("wordToGuess").innerText.split(" "); // Henter element _ _ _ _ _
+  //hiddenArray = hangManWord.innerHTML;
+
+  //let wordToGuess = document.getElementById("wordToGuess").innerText.split(" "); // Henter element _ _ _ _ _
 
   for (let i = 0; i < wordArray.length; i++) {
     // HENTER INDEX UD HVOR DEN ER === VORES GUESS
     if (wordArray[i] === guess) {
-      console.log(wordArray);
-
-      wordToGuess.splice(i, 1, guess); // Erstatter _ med det bogstav vi har indtastet.
-      guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
+      globalHiddenArray.splice(i, 1, guess); // Erstatter _ med det bogstav vi har indtastet.
     }
-
-    hangManWord.innerHTML = wordToGuess;
-    console.log(wordToGuess);
   }
+
+  guesses.push(guess); //Smider vores get i en liste. - Mangler at blive printet.
+  setText("hangManWord", globalHiddenArray);
 
   // Hvis ordet ikke indeholder bogstavet, skal der trækkes 1 fra lives
   // + skal tilføjes til en liste over anvendte bogstaver. som skal vises (rød skrift??)
