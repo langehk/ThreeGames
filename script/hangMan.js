@@ -43,9 +43,11 @@ let listOfWords = [
 ];
 
 let hangManWord = document.getElementById("hangManWord");
+let displayGuesses = document.getElementById("guesses");
 let word; // Ordet det skal gættes
 let wordArray; // Ordet i et array
 let guess; // Vores gæt
+
 let guesses = []; // Liste af gæt
 let currentLives; // Vores liv
 let globalHiddenArray; // Brugt til at opdatere vores skjulte "array"
@@ -104,6 +106,8 @@ function updateLives() {
   if (currentLives < 1) {
     livesText.innerHTML = "Game over!";
   }
+
+  displayGuesses.innerHTML = guesses; // Viser hvilke bogstaver vi har anvendt.
 }
 
 /*
