@@ -3,3 +3,12 @@ button {
   margin: 5px;
   font-size: 1.1em;
 }
+
+#alphabet {
+  pointer-events: none;
+}
+
+.letter,
+button {
+  pointer-events: auto;
+}
