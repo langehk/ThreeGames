@@ -52,3 +52,15 @@ main {
 #game {
   display: none;
 }
+
+#dices {
+  display: flex;
+  flex-direction: row;
+}
+.dice {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}

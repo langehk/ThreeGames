@@ -127,6 +127,18 @@ function rollDices(arr) {
     let dice1Value = document.getElementById("dice1");
     dice1Value.innerHTML = dice1.value; 
 
+    let dice2Value = document.getElementById("dice2");
+    dice2Value.innerHTML = dice2.value; 
+
+    let dice3Value = document.getElementById("dice3");
+    dice3Value.innerHTML = dice3.value; 
+
+    let dice4Value = document.getElementById("dice4");
+    dice4Value.innerHTML = dice4.value; 
+
+    let dice5Value = document.getElementById("dice5");
+    dice5Value.innerHTML = dice5.value; 
+
 
     return arr;
 }
@@ -140,8 +152,18 @@ document.getElementById("rollDices").onclick = function() {
 
 
 
+document.getElementById("dice1").onclick = function(){
+   
+    if(dice1.isLocked == false)
+    {
+        dice1.isLocked = true; 
+    }
+    else{
+        dice1.isLocked = false;
+    }
 
-
-
+    console.log(dice1);
+   
+}
 
 
