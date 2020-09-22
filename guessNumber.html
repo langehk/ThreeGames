@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <script src="script/guessNumber.js"></script>
     <title>Guess a number</title>
-
   </head>
 
   <body>
@@ -21,13 +20,11 @@
     </header>
     <main>
       <h1>Guess The Number</h1>
-
-      <p>We have selected a random number between 1 - 1000.
-        See if you can guess it.</p>
+      <p>We have selected a random number between 1 - 1000. See if you can guess it.</p>
       <div id="form">
         <div id="guessForm">
           <label for="guessField">Enter a guess: </label>
-          <input type="text" onfocus="this.value=''" id="guessField" class="guessField">
+          <input type="number" onfocus="this.value=''" id="guessField" class="guessField">
           <input type="submit" value="Submit guess" class="guessSubmit" id="submitguess">
         </div>
         <p id="result"></p>
@@ -38,12 +35,6 @@
         <p id="guesses"></p>
       </div>
     </main>
-
-
-
-
-
-
     <script src="script/gn-execution.js"></script>
   </body>
 

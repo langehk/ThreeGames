@@ -91,39 +91,3 @@ let result = function () {
 
   }
 }
-
-
-
-
-
-
-
-
-
-//   if (guess == 10)
-//   {
-//     document.getElementById("result").innerHTML = 'Sorry, you used all of your guesses' ;
-//     document.getElementById("submitguess").style.display = "none";
-//   }
-//   else if (x == '') {
-//     document.getElementById("result").innerHTML = 'You have to write something in the text field' ;
-//     guess++;
-//   }
-//   else if(x == y)
-//   {
-//     guess++;
-//     document.getElementById("result").innerHTML = `CONGRATULATIONS!!! you guessed the right number with ${guess} guess` ;
-//   }
-//   else if(x > y)
-//   {
-//       guess++;
-//       document.getElementById("result").innerHTML = "Try a smaller number";
-//       console.log('number of guess: ' + guess);
-//   }
-//   else
-//   {
-//       guess++;
-//       document.getElementById("result").innerHTML = "Try a bigger number";
-//       console.log('number of guess: ' + guess);
-//   }
-// }
