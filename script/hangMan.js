@@ -61,6 +61,8 @@ function setText(id, newvalue) {
   s.innerHTML = newvalue;
 }
 
+
+
 // Returnerer et tilfældigt ord fra vores Array.
 // Skal laves så man kun kan trykke en gang. (Opderete et bestemt element?)
 function newGame() {
@@ -70,6 +72,16 @@ function newGame() {
   convertToLetterArray(randomWord);
   currentLives = 10;
   updateLives();
+
+  
+  let all = document.getElementsByClassName("letter");
+  /**
+   * Enabler vores knapper når vi nulstiller spillet.
+   */
+  for (let i = 0; i < all.length; i++) {
+      all[i].disabled = false;
+  }
+
 }
 
 /*
@@ -123,7 +135,7 @@ function loadKeyboard() {
     letters.id = "alphabet";
 
     list = document.createElement("button");
-    list.id = "letter"; //Laver et id til hver knap, så vi kan fange den senere.
+    list.classList.add("letter"); //Laver et id til hver knap, så vi kan fange den senere.
     list.innerHTML = alphabet[i]; //Angiver bogstav til hver "button" element.
     myKeyboard.appendChild(letters); //Sætter vores "letters" ind i keyboard div.
     letters.appendChild(list);
@@ -148,6 +160,7 @@ Og returnerer bogstavet.
 */
 function checkLetter(element) {
   let guess = element.srcElement.innerText;
+  element.srcElement.disabled = true;
 
   //Checker om bogstavet allerede er tastet i forvejen..
   if (guesses.includes(guess)) {
