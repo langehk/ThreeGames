@@ -148,7 +148,18 @@ loadKeyboard();
 Event listener på alphabet buttons.
 Ser på alle buttons under alphabet "Alphabet" og laver en eventlistener, når vi klikker på en button.
 */
-document.getElementById("alphabet").addEventListener("click", checkLetter); // FEJL !!!
+// document.getElementById("alphabet").addEventListener("click", checkLetter); // FEJL !!!
+
+
+/**
+ * Eventlistener UDELUKKENDE på Letter buttons.
+ */
+let allLetters = document.getElementsByClassName("letter");
+
+for (let i = 0; i < allLetters.length; i++) {
+  allLetters[i].addEventListener("click", checkLetter);
+
+}
 
 // Et problem der kan snakkes om - Event listener som kun rammer en button.
 // Hvis vi har "alphabet" og ikke "letters" vil vi også ramme vores "spilleplade"
