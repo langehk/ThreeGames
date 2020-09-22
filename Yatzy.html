@@ -17,34 +17,45 @@
       <a href="hangMan.html">Hangman</a>
       <a href="yatzy.html">Yatzy</a>
     </header>
-    
+
     <main>
       <div id="gameStart">
-        <input type="text"  onfocus="this.value=''" id="addPlayer" />
+        <input type="text" onfocus="this.value=''" id="addPlayer" />
         <input type="submit" value="Add player" id="submitPlayer" />
         <br>
         <p id="addedPlayer"></p>
         <button id="startGame">Start game</button>
       </div>
-        <div id="game">
-          <div id="dices">
-            <div id="dice1" class="dice"></div>
-            <div id="dice2" class="dice"></div>
-            <div id="dice3" class="dice"></div>
-            <div id="dice4" class="dice"></div>
-            <div id="dice5" class="dice"></div>
+      <div id="game">
+        <div id="dices">
+
+          <div class="dice">
+            <p id="dice1"></p>
           </div>
-          <button id="rollDices">Roll dices</button>
-          <div id="points">
-            <table id="gameTable">
-  
-            </table>
+          <div class="dice">
+            <p id="dice2"></p>
           </div>
+          <div class="dice">
+            <p id="dice3"></p>
+          </div>
+          <div class="dice">
+            <p id="dice4"></p>
+          </div>
+          <div class="dice">
+            <p id="dice5"></p>
+          </div>
+        </div>
+        <button id="rollDices">Roll dices</button>
+        <div id="points">
+          <table id="gameTable">
+
+          </table>
+        </div>
       </div>
-  </main>
+    </main>
 
 
-<script src="script/Yatzy.js"></script>
+    <script src="script/Yatzy.js"></script>
 
   </body>
 
