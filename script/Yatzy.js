@@ -7,6 +7,14 @@ let points = ["Ones", "Twoes", "Threes", "Fours", "Fives", "Sixes", "Bonus", "On
 "Four of a kind", "Small straight", "Large straight", "Full house", "Chance", "Yatzee", "Sum"]; 
 
 
+class Die {
+    constructor(value, isLocked) {
+        this.value = value;
+        this.isLocked = isLocked;
+    }
+}
+
+
 document.getElementById("submitPlayer").onclick = function(){
 
     let playerName = document.getElementById("addPlayer").value;
@@ -25,6 +33,7 @@ document.getElementById("startGame").onclick = function startGame(){
     buildTableHead(gameTable, players);
     
     document.getElementById('gameStart').style.display="none";
+    document.getElementById('game').style.display="block";
     buildTablePointRow(gameTable, points, players);
 }
 
@@ -35,9 +44,7 @@ document.getElementById("startGame").onclick = function startGame(){
 let gameTable = document.getElementById("gameTable");
 let pointsTable = document.getElementById("points");
 
-let createTableHead = document.createElement("th");
-let createTableRow = document.createElement("tr");
-let createTableD = document.createElement("td");
+
 
 //Vi bygger table head
 function buildTableHead(table, data)
@@ -74,6 +81,64 @@ function buildTablePointRow(table, data, players){
     }
 
 }
+
+
+let dice1 = new Die();
+dice1.value = 0;
+dice1.isLocked = false;
+
+let dice2 = new Die();
+dice2.value = 0;
+dice2.isLocked = false;
+
+let dice3  = new Die();
+dice3.value = 0;
+dice3.isLocked = false;
+
+let dice4 = new Die();
+dice4.value = 0;
+dice4.isLocked = false;
+
+let dice5  = new Die();
+dice5.value = 0;
+dice5.isLocked = false;
+
+
+
+let diceArray = [dice1, dice2, dice3, dice4, dice5];
+
+let play = function(){
+    return Math.floor(Math.random() * 6) + 1;
+    
+}
+
+
+// Rolls 5 dices
+function rollDices(arr) {
+
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i].isLocked == false){ //Hvis class er locked, så ruller terningen ikke
+            arr[i].value = play();
+        }
+    }
+    console.log(arr);
+
+    
+    let dice1Value = document.getElementById("dice1");
+    dice1Value.innerHTML = dice1.value; 
+
+
+    return arr;
+}
+
+/**
+ * Kører RollDices() når vi clicker på Roll..
+ */
+document.getElementById("rollDices").onclick = function() {
+    rollDices(diceArray); 
+}
+
+
 
 
 
