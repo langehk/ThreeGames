@@ -92,7 +92,7 @@ function convertToLetterArray(word) {
   }
 
   wordArray = letterArray; // ["P", "E", "R"];
-  setText("hangManWord", hiddenArray);
+  setText("hangManWord", hiddenArray.join(" "));
   globalHiddenArray = hiddenArray;
   return hiddenArray; // ["_", "_", "_"];
 }
@@ -171,6 +171,6 @@ function checkLetter(element) {
     currentLives--;
   }
   guesses.push(guess);
-  setText("hangManWord", globalHiddenArray);
+  setText("hangManWord", globalHiddenArray.join(" "));
   updateLives();
 }
