@@ -89,7 +89,7 @@ let pair;
 
 function onePair(arr)
 {
-    debugger;
+   
     checkDices(arr);
     let points = 0;
     pair = 0;
@@ -235,34 +235,42 @@ function twoPair(arr)
 
 
 
+let isThreeOfAKind = false;
+
 function threeOfAKind(arr){
-debugger;
+
     checkDices(arr);
     let points = 0;
 
     if(ones >= 3)
     {
         points = 3;
+        isThreeOfAKind = true;       
     }
     if(twoes >= 3)
     {
         points = 6;
+        isThreeOfAKind = true;
     }
     if(threes >= 3)
     {
         points = 9;
+        isThreeOfAKind = true;
     }
     if(fours >= 3)
     {
         points = 12;
+        isThreeOfAKind = true;
     }
     if(fives >= 3)
     {
         points = 15;
+        isThreeOfAKind = true;
     }
     if(sixes >= 3)
     {
         points = 18;
+        isThreeOfAKind = true;
     }
     return points;
 }
@@ -298,6 +306,34 @@ function fourOfAKind(arr){
     return points;
 }
 
+function fullHouse(arr){
+
+    debugger;
+    let values = arr.map(a => a.value);
+    
+    values.sort();
+    let points = 0;
+
+    let var1 = values[0];
+    let var2 = values[1];
+    let var3 = values[2];
+    let var4 = values[3];
+    let var5 = values[4];
+
+
+    if((var1 == var2 && var3 == var5) || (var1 == var3 && var4 == var5)){
+        
+        for (let i = 0; i < values.length; i++) {
+            debugger;
+            points += values[i];
+        }
+
+    }
+    return points;
+ 
+}
+
+
 
 
 function smallStraight(arr){
@@ -330,4 +366,39 @@ function largeStraight(arr){
         points = 0;
         return points;
     }
+}
+
+
+function bonus(arr){
+    let result = calcOnes(arr) + calcTwoescape(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
+    let points = 0;
+    if(result >= 63){
+        points = 50;
+    }
+    return points; 
+}
+
+
+function chance(arr){
+    let points = calcOnes(arr) + calcTwoescape(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
+    return points;
+}
+
+function yatzy(arr){
+let points = 0;
+
+let values = arr.map(a => a.value);
+    
+    values.sort();
+    let points = 0;
+
+    let var1 = values[0];
+    let var5 = values[4];
+
+    if(var1 == var5){
+       points = 50;
+
+    }
+    return points;
+
 }

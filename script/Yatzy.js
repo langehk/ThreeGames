@@ -175,6 +175,11 @@ function rollDices(arr) {
     let calcTwoPairResult = twoPair(arr);
     let calcThreeOfAKindResult = threeOfAKind(arr);
     let calcFourOfAKindResult = fourOfAKind(arr);
+    let calcFullHouseResult = fullHouse(arr);
+    let calcChanceResult = chance(arr);
+    let calcBonusResult = bonus(arr);
+    let calcYatzyResult = yatzy(arr);
+
     debugger;
     
      
