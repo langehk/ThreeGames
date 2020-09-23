@@ -74,7 +74,7 @@ function buildTablePointRow(table, data, players){
         let text = document.createTextNode(data[i]);
         cell.appendChild(text);
 
-        for (let u = 0; u < players.length; u++) {
+        for (let u = 1; u < players.length; u++) {
           
             row.insertCell();
         }
