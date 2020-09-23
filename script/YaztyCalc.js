@@ -370,7 +370,7 @@ function largeStraight(arr){
 
 
 function bonus(arr){
-    let result = calcOnes(arr) + calcTwoescape(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
+    let result = calcOnes(arr) + calcTwoes(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
     let points = 0;
     if(result >= 63){
         points = 50;
@@ -380,7 +380,7 @@ function bonus(arr){
 
 
 function chance(arr){
-    let points = calcOnes(arr) + calcTwoescape(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
+    let points = calcOnes(arr) + calcTwoes(arr) + calcThrees(arr) + calcFours(arr) + calcFives(arr) + calcSixes(arr);
     return points;
 }
 
