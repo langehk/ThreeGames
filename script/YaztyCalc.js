@@ -170,6 +170,47 @@ if(pair == 2) {
 }
 
 
+
+function threeOfAKind(arr){
+debugger;
+    checkDices(arr);
+    let points = 0;
+
+    if(ones >= 3)
+    {
+        points = 3;
+        
+    }
+    if(twoes >= 3)
+    {
+        points = 6;
+        
+    }
+    if(threes >= 3)
+    {
+        points = 9;
+        
+    }
+    if(fours >= 3)
+    {
+        points = 12;
+        
+    }
+    if(fives >= 3)
+    {
+        points = 15;
+        
+    }
+    if(sixes >= 3)
+    {
+        points = 18;
+        
+    }
+    return points;
+}
+
+
+
 function smallStraight(arr){
     checkDices(arr); 
     let points = 0; 
