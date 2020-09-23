@@ -150,20 +150,32 @@ document.getElementById("rollDices").onclick = function() {
     rollDices(diceArray); 
 }
 
-
-
-document.getElementById("dice1").onclick = function(){
-   
-    if(dice1.isLocked == false)
-    {
-        dice1.isLocked = true; 
+function lockDice(dice){
+    
+    if(dice.isLocked == false){
+        dice.isLocked == true;
     }
     else{
-        dice1.isLocked = false;
+        dice.isLocked == false;
     }
-
-    console.log(dice1);
-   
 }
 
+document.getElementById("dice1").onclick = function(){ 
+    lockDice(dice1);  
+}
 
+document.getElementById("dice2").onclick = function(){ 
+    lockDice(dice2);  
+}
+
+document.getElementById("dice3").onclick = function(){ 
+    lockDice(dice3);  
+}
+
+document.getElementById("dice4").onclick = function(){ 
+    lockDice(dice4);  
+}
+
+document.getElementById("dice5").onclick = function(){ 
+    lockDice(dice5);  
+}
