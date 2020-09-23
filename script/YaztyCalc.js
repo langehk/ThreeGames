@@ -390,7 +390,7 @@ let points = 0;
 let values = arr.map(a => a.value);
     
     values.sort();
-    let points = 0;
+    
 
     let var1 = values[0];
     let var5 = values[4];
