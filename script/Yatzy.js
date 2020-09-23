@@ -87,6 +87,7 @@ function buildTablePointRow(table, data, players){
     }
 }
 
+//Vi skyder cellerne fra vores table ind i arrays
 //Her kunne det være ideelt at have en dynamisk måde at opbygge disse arrays, så man ikke er begrænset 
 let player1Array = document.getElementsByClassName("td1");
 debugger;
@@ -100,7 +101,7 @@ let player8Array = document.getElementsByClassName("td8");
 let player9Array = document.getElementsByClassName("td9");
 let player10Array = document.getElementsByClassName("td10");
 
-//console.log(player1Array);
+console.log("Player array: " + player1Array); //Denne returnerer en HTML Object collenction
 
 //Opretter de fem terninger 
 let dice1 = new Die();
@@ -141,11 +142,11 @@ document.getElementById("swapPlayer").onclick = function swapTurn(e){
     if(playerTurn == (e.length - 1)){
         playerTurn = 0; 
         playerTurn++; 
-        console.log(players[playerTurn]);
+        //console.log(players[playerTurn]);
         return e[playerTurn];
     }
     playerTurn++;
-    console.log(e[playerTurn]);
+    //console.log(e[playerTurn]);
 
     return e[playerTurn]; 
 
@@ -161,9 +162,10 @@ function rollDices(arr) {
             arr[i].value = play();
         }
     }
-    console.log(arr);
+    //console.log(arr);
 
     
+    //Terningerne i HTML'en får skudt værdien ind    
     let dice1Value = document.getElementById("dice1");
     dice1Value.innerHTML = dice1.value; 
 
@@ -179,9 +181,7 @@ function rollDices(arr) {
     let dice5Value = document.getElementById("dice5");
     dice5Value.innerHTML = dice5.value; 
 
-    
-
-
+    //Vi udregner de forskellige pointmuligheder
     let smallStraightResult = smallStraight(arr);
     let largeStraightResult = largeStraight(arr);
     let calcOnesResult = calcOnes(arr);
