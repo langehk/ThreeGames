@@ -172,6 +172,7 @@ function rollDices(arr) {
     let calcFivesResult = calcFives(arr);
     let calcSixesResult = calcSixes(arr);
     let calcOnePairResult = onePair(arr);
+    let calcTwoPairResult = twoPair(arr);
     debugger;
      
      

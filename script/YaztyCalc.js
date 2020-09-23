@@ -78,50 +78,99 @@ function calcSixes(arr){
 }
 
 
+let pairOne = false;
+let pairTwo = false;
+let pairThree = false;
+let pairFour = false;
+let pairFive = false;
+let pairSix = false;
+let pair;
+
 
 function onePair(arr)
 {
-    debugger;
     checkDices(arr);
     let points = 0;
+    pair = 0;
+     
     if(ones >= 2)
     {
         points = 2;
-       
+        pairOne = true;
+        pair++;
     }
     if(twoes >= 2)
     {
         points = 4;
-        
+        pairTwo = true;
+        pair++;
     }
     if(threes >= 2)
     {
         points = 6;
-        
+        pairThree = true;
+        pair++;
     }
     if(fours >= 2)
     {
         points = 8;
-        
+        pairFour = true;
+        pair++;
     }
     if(fives >= 2)
     {
         points = 10;
-        
+        pairFive = true;
+        pair++;
     }
     if(sixes >= 2)
     {
         points = 12;
-        
+        pairSix = true;
+        pair++;
     }
     return points;
-    
 }
 
 
+function twoPair(arr)
+{
+
+    let points = 0;
+    checkDices(arr);
+    let firstPair = onePair(arr);
+if(pair == 2) {
+    if(pairOne == true)
+    {
+        points += 2;
+    }
+    if(pairTwo == true)
+    {
+        points += 4;
+    }
+    if(pairThree == true)
+    {
+        points += 6;
+    }
+    if(pairFour == true)
+    {
+        points += 8;
+    }
+    if(pairFive == true)
+    {
+        points += 10;
+    }
+    if(pairSix == true)
+    {
+        points += 12;
+    }
+    return points;
+}
+    return points;
+}
+
 
 function smallStraight(arr){
-    debugger;
     checkDices(arr); 
     let points = 0; 
     if(ones == 1 && twoes == 1 && threes == 1 && fours == 1 && fives == 1)
