@@ -174,6 +174,7 @@ function rollDices(arr) {
     let calcOnePairResult = onePair(arr);
     let calcTwoPairResult = twoPair(arr);
     let calcThreeOfAKindResult = threeOfAKind(arr);
+    let calcFourOfAKindResult = fourOfAKind(arr);
     debugger;
     
      

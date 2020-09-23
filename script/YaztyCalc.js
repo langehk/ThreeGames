@@ -179,32 +179,57 @@ debugger;
     if(ones >= 3)
     {
         points = 3;
-        
     }
     if(twoes >= 3)
     {
         points = 6;
-        
     }
     if(threes >= 3)
     {
         points = 9;
-        
     }
     if(fours >= 3)
     {
         points = 12;
-        
     }
     if(fives >= 3)
     {
         points = 15;
-        
     }
     if(sixes >= 3)
     {
         points = 18;
-        
+    }
+    return points;
+}
+
+function fourOfAKind(arr){
+    checkDices(arr);
+    let points = 0;
+
+    if(ones >= 4)
+    {
+        points = 4;
+    }
+    if(twoes >= 4)
+    {
+        points = 8;
+    }
+    if(threes >= 4)
+    {
+        points = 12;
+    }
+    if(fours >= 4)
+    {
+        points = 16;
+    }
+    if(fives >= 4)
+    {
+        points = 20;
+    }
+    if(sixes >= 4)
+    {
+        points = 24;
     }
     return points;
 }
