@@ -119,7 +119,6 @@ let playerTurn = 0;
 
 // Skifte tur for antal spillere
 document.getElementById("swapPlayer").onclick = function swapTurn(e){
-debugger;
     e = players;
 
     if(playerTurn == (e.length - 1)){
@@ -163,7 +162,19 @@ function rollDices(arr) {
     let dice5Value = document.getElementById("dice5");
     dice5Value.innerHTML = dice5.value; 
 
-
+    
+    let smallStraightResult = smallStraight(arr);
+    let largeStraightResult = largeStraight(arr);
+    let calcOnesResult = calcOnes(arr);
+    let calcTwoesResult = calcTwoes(arr);
+    let calcThreesResult = calcThrees(arr);
+    let calcFoursResult = calcFours(arr);
+    let calcFivesResult = calcFives(arr);
+    let calcSixesResult = calcSixes(arr);
+    let calcOnePairResult = onePair(arr);
+    debugger;
+     
+     
     return arr;
 }
 
@@ -204,4 +215,6 @@ document.getElementById("dice4").onclick = function(){
 document.getElementById("dice5").onclick = function(){ 
     lockDice(dice5); 
 }
+
+
 
