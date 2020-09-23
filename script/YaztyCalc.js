@@ -308,7 +308,7 @@ function fourOfAKind(arr){
 
 function fullHouse(arr){
 
-    debugger;
+
     let values = arr.map(a => a.value);
     
     values.sort();
@@ -324,7 +324,7 @@ function fullHouse(arr){
     if((var1 == var2 && var3 == var5) || (var1 == var3 && var4 == var5)){
         
         for (let i = 0; i < values.length; i++) {
-            debugger;
+
             points += values[i];
         }
 

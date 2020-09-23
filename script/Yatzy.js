@@ -2,7 +2,7 @@
 
 
 
-let players = ["", "Ole", "Ida", "Jan"];
+let players = [""];
 let points = ["Ones", "Twoes", "Threes", "Fours", "Fives", "Sixes", "Bonus", "One pair", "Two pairs", "Three of a kind", 
 "Four of a kind", "Small straight", "Large straight", "Full house", "Chance", "Yatzee", "Sum"]; 
 
@@ -74,17 +74,33 @@ function buildTablePointRow(table, data, players){
     {
         let row = table.insertRow();
         let cell = row.insertCell();
+        
        
         let text = document.createTextNode(data[i]);
         cell.appendChild(text);
-
+        
         for (let u = 1; u < players.length; u++) {
-          
-            row.insertCell();
+            
+            let x = row.insertCell();
+            x.className = "td" + u;
         }
     }
-
 }
+
+//Her kunne det være ideelt at have en dynamisk måde at opbygge disse arrays, så man ikke er begrænset 
+let player1Array = document.getElementsByClassName("td1");
+debugger;
+let player2Array = document.getElementsByClassName("td2");
+let player3Array = document.getElementsByClassName("td3");
+let player4Array = document.getElementsByClassName("td4");
+let player5Array = document.getElementsByClassName("td5");
+let player6Array = document.getElementsByClassName("td6");
+let player7Array = document.getElementsByClassName("td7");
+let player8Array = document.getElementsByClassName("td8");
+let player9Array = document.getElementsByClassName("td9");
+let player10Array = document.getElementsByClassName("td10");
+
+//console.log(player1Array);
 
 //Opretter de fem terninger 
 let dice1 = new Die();
@@ -116,6 +132,7 @@ let play = function(){
 }
 
 let playerTurn = 0;
+
 
 // Skifte tur for antal spillere
 document.getElementById("swapPlayer").onclick = function swapTurn(e){
@@ -163,6 +180,8 @@ function rollDices(arr) {
     dice5Value.innerHTML = dice5.value; 
 
     
+
+
     let smallStraightResult = smallStraight(arr);
     let largeStraightResult = largeStraight(arr);
     let calcOnesResult = calcOnes(arr);
@@ -180,9 +199,16 @@ function rollDices(arr) {
     let calcBonusResult = bonus(arr);
     let calcYatzyResult = yatzy(arr);
 
-    debugger;
+
+    //player1Array[0].value = 1;
+
+
     
-     
+    // player1Array.splice(0,1, calcOnesResult);
+    
+    
+
+    
      
     return arr;
 }
