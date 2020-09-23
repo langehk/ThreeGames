@@ -78,17 +78,18 @@ function calcSixes(arr){
 }
 
 
-let pairOne = false;
-let pairTwo = false;
-let pairThree = false;
-let pairFour = false;
-let pairFive = false;
-let pairSix = false;
+let pairOne = 0;
+let pairTwo = 0;
+let pairThree = 0;
+let pairFour = 0;
+let pairFive = 0;
+let pairSix = 0;
 let pair;
 
 
 function onePair(arr)
 {
+    debugger;
     checkDices(arr);
     let points = 0;
     pair = 0;
@@ -96,38 +97,71 @@ function onePair(arr)
     if(ones >= 2)
     {
         points = 2;
-        pairOne = true;
+        pairOne = 1;
         pair++;
+    }
+    if(ones >= 4) {
+        points = 2
+        pairOne = 2;
+        pair = 2;
     }
     if(twoes >= 2)
     {
         points = 4;
-        pairTwo = true;
+        pairTwo = 1;
         pair++;
+    }
+    if(twoes >= 4) {
+        points = 4
+        pairTwo = 2;
+        pair = 2;
     }
     if(threes >= 2)
     {
         points = 6;
-        pairThree = true;
+        pairThree = 1;
         pair++;
+    }
+    if(threes >= 4) {
+        points = 6
+        pairThree = 2;
+        pair = 2;
     }
     if(fours >= 2)
     {
         points = 8;
-        pairFour = true;
+        pairFour = 1;
         pair++;
+    }
+    if(fours >= 4)
+    {
+        points = 8;
+        pairFour = 2;
+        pair = 2;
     }
     if(fives >= 2)
     {
         points = 10;
-        pairFive = true;
+        pairFive = 1;
         pair++;
+    }
+    if(fives >= 4)
+    {
+        points = 10;
+        pairFive = 2;
+        pair = 2;
     }
     if(sixes >= 2)
     {
         points = 12;
-        pairSix = true;
+        pairSix = 1;
         pair++;
+    }
+    if(sixes >= 4)
+    {
+        points = 12;
+        pairSix = 2;
+        pair = 2;
     }
     return points;
 }
@@ -139,31 +173,61 @@ function twoPair(arr)
     let points = 0;
     checkDices(arr);
     let firstPair = onePair(arr);
-if(pair == 2) {
-    if(pairOne == true)
-    {
-        points += 2;
-    }
-    if(pairTwo == true)
-    {
-        points += 4;
-    }
-    if(pairThree == true)
-    {
-        points += 6;
-    }
-    if(pairFour == true)
-    {
-        points += 8;
-    }
-    if(pairFive == true)
-    {
-        points += 10;
-    }
-    if(pairSix == true)
-    {
-        points += 12;
-    }
+    if(pair == 2) {
+        if(pairOne == 1)
+        {
+            points += 2;
+        }
+        if(pairOne == 2)
+        {
+            points += 4;
+        }
+
+        if(pairTwo == 1)
+        {
+            points += 4;
+        }
+        if(pairTwo == 2) 
+        {
+            points += 8;
+        }
+
+        if(pairThree == 1)
+        {
+            points += 6;
+        }
+        if(pairThree == 2)
+        {
+            points += 12;
+        }
+
+        if(pairFour == 1)
+        {
+            points += 8;
+        }
+        if(pairFour == 2)
+        {
+            points += 16;
+        }
+
+        if(pairFive == 1)
+        {
+            points += 10;
+        }
+        if(pairFive == 2)
+        {
+            points += 20;
+        }
+
+        if(pairSix == 1)
+        {
+            points += 12;
+        }
+        if(pairSix == 2)
+        {
+            points += 24;
+        }
+
     return points;
 }
     return points;
