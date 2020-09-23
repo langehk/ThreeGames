@@ -2,11 +2,14 @@
 
 
 
-let players = [""];
+let players = ["", "Ole", "Ida", "Jan"];
 let points = ["Ones", "Twoes", "Threes", "Fours", "Fives", "Sixes", "Bonus", "One pair", "Two pairs", "Three of a kind", 
 "Four of a kind", "Small straight", "Large straight", "Full house", "Chance", "Yatzee", "Sum"]; 
 
+let maxRolls = 3;
+let rolls = 0;
 
+//Terningen til et object
 class Die {
     constructor(value, isLocked) {
         this.value = value;
@@ -14,7 +17,7 @@ class Die {
     }
 }
 
-
+//Funktion til at skyde spillernavne ind i et array
 document.getElementById("submitPlayer").onclick = function(){
 
     let playerName = document.getElementById("addPlayer").value;
@@ -64,6 +67,7 @@ function buildTableHead(table, data)
 
 }
 
+//Vi bygger table rækker inkl. point og tomme felter under spillere
 function buildTablePointRow(table, data, players){
     
     for(let i = 0; i < data.length; i++)
@@ -82,7 +86,7 @@ function buildTablePointRow(table, data, players){
 
 }
 
-
+//Opretter de fem terninger 
 let dice1 = new Die();
 dice1.value = 0;
 dice1.isLocked = false;
@@ -103,14 +107,34 @@ let dice5  = new Die();
 dice5.value = 0;
 dice5.isLocked = false;
 
-
-
 let diceArray = [dice1, dice2, dice3, dice4, dice5];
 
+//Funktion til at kaste med terningen
 let play = function(){
     return Math.floor(Math.random() * 6) + 1;
     
 }
+
+let playerTurn = 0;
+
+// Skifte tur for antal spillere
+document.getElementById("swapPlayer").onclick = function swapTurn(e){
+debugger;
+    e = players;
+
+    if(playerTurn == (e.length - 1)){
+        playerTurn = 0; 
+        playerTurn++; 
+        console.log(players[playerTurn]);
+        return e[playerTurn];
+    }
+    playerTurn++;
+    console.log(e[playerTurn]);
+
+    return e[playerTurn]; 
+
+}
+
 
 
 // Rolls 5 dices
@@ -144,22 +168,23 @@ function rollDices(arr) {
 }
 
 /**
- * Kører RollDices() når vi clicker på Roll..
+ * Kører RollDices() når vi clicker på Roll-knap..
  */
 document.getElementById("rollDices").onclick = function() {
     rollDices(diceArray); 
 }
 
-function lockDice(dice){
-    
+//Funktion til at kunne låse terning
+let lockDice = function(dice){
     if(dice.isLocked == false){
-        dice.isLocked == true;
+        dice.isLocked = true;
     }
     else{
-        dice.isLocked == false;
+        dice.isLocked = false;
     }
 }
 
+//Vi sætter låse-funktion på hver terning
 document.getElementById("dice1").onclick = function(){ 
     lockDice(dice1);  
 }
@@ -177,5 +202,6 @@ document.getElementById("dice4").onclick = function(){
 }
 
 document.getElementById("dice5").onclick = function(){ 
-    lockDice(dice5);  
+    lockDice(dice5); 
 }
+
