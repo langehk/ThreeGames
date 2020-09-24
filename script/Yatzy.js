@@ -9,6 +9,18 @@ let points = ["Ones", "Twoes", "Threes", "Fours", "Fives", "Sixes", "Bonus", "On
 let maxRolls = 3;
 let rolls = 0;
 
+//Player arrays, hvor vi kan smide deres point ind
+let player1Array = [];
+let player2Array = [];
+let player3Array = [];
+let player4Array = [];
+let player5Array = [];
+let player6Array = [];
+let player7Array = [];
+let player8Array = [];
+let player9Array = [];
+let player10Array = [];
+
 //Terningen til et object
 class Die {
     constructor(value, isLocked) {
@@ -81,6 +93,7 @@ function buildTablePointRow(table, data, players){
         
         cell.appendChild(text);
         
+        
         for (let u = 1; u < players.length; u++) {
             let str = document.createTextNode("t");
             let x = row.insertCell();
@@ -89,29 +102,6 @@ function buildTablePointRow(table, data, players){
         }
     }
 }
-
-//Vi skyder cellerne fra vores table ind i arrays
-//Her kunne det være ideelt at have en dynamisk måde at opbygge disse arrays, så man ikke er begrænset 
-
-//var arr = Array.from(htmlCollection);
-debugger;
-let player1Array = [...document.getElementsByClassName("td2")];
-
-let player2Array = document.getElementsByClassName("td2");
-let player3Array = document.getElementsByClassName("td3");
-let player4Array = document.getElementsByClassName("td4");
-let player5Array = document.getElementsByClassName("td5");
-let player6Array = document.getElementsByClassName("td6");
-let player7Array = document.getElementsByClassName("td7");
-let player8Array = document.getElementsByClassName("td8");
-let player9Array = document.getElementsByClassName("td9");
-let player10Array = document.getElementsByClassName("td10");
-
-/*for(let i = 0; i < player1Array.length; i++){
-    player1Array.push(document.getElementsByClassName("td1").item(i));
-}*/
-
-console.log("Player array: " + player1Array); //Denne returnerer en HTML Object collenction
 
 //Opretter de fem terninger 
 let dice1 = new Die();
@@ -148,7 +138,7 @@ let playerTurn = 0;
 // Skifte tur for antal spillere
 document.getElementById("swapPlayer").onclick = function swapTurn(e){
     e = players;
-
+debugger;
     if(playerTurn == (e.length - 1)){
         playerTurn = 0; 
         playerTurn++; 
@@ -159,6 +149,76 @@ document.getElementById("swapPlayer").onclick = function swapTurn(e){
     return e[playerTurn]; 
 
 }
+
+
+let testArray = [];
+
+
+function getPlayerPoints(){
+ 
+     // Længden på vores row.
+     let rowLength = document.getElementById("gameTable").rows.length;
+ 
+     //Længden af antal celler - giver os antal af spillere
+     let cellLength = document.getElementById("gameTable").rows[0].cells.length - 1;
+     
+     /*
+     //Indsætter værdien fra cellerne ind i playerArray 
+     function createPlayerPointsArray(arr, playerNumber){
+         for (let i = 1; i < rowLength; i++) {
+             //let y = document.getElementById("gameTable").rows[i].cells.item(playerNumber).innerHTML;   
+             
+            if(arr[0])
+            {
+                arr.splice(1,1,calcOnes());
+            }
+
+             arr.push(y);
+             
+         }
+         console.log(arr);
+     }*/
+ 
+     testArray = player1Array;
+
+     if(cellLength >= 1){
+         createPlayerPointsArray(player1Array, 1);
+     }
+     if(cellLength >= 2){
+         createPlayerPointsArray(player2Array, 2);
+     }
+     if(cellLength >= 3){
+         createPlayerPointsArray(player3Array, 3);
+     }
+     if(cellLength >= 4){
+         createPlayerPointsArray(player4Array, 4);
+     }
+     if(cellLength >= 5){
+         createPlayerPointsArray(player5Array, 5);
+     }
+     if(cellLength >= 6){
+         createPlayerPointsArray(player6Array, 6);
+     }
+     if(cellLength >= 7){
+         createPlayerPointsArray(player7Array, 7);
+     }
+     if(cellLength >= 8){
+         createPlayerPointsArray(player8Array, 8);
+     }
+     if(cellLength >= 9){
+         createPlayerPointsArray(player9Array, 9);
+     }
+     if(cellLength >= 10){
+         createPlayerPointsArray(player10Array, 10);
+     }
+    
+}
+
+function setPlayerPoints(){
+    
+}
+
+
 
 
 
@@ -188,33 +248,63 @@ function rollDices(arr) {
     dice5Value.innerHTML = dice5.value; 
 
     //Vi udregner de forskellige pointmuligheder
-    let smallStraightResult = smallStraight(arr);
-    let largeStraightResult = largeStraight(arr);
-    let calcOnesResult = calcOnes(arr);
-    let calcTwoesResult = calcTwoes(arr);
-    let calcThreesResult = calcThrees(arr);
-    let calcFoursResult = calcFours(arr);
-    let calcFivesResult = calcFives(arr);
-    let calcSixesResult = calcSixes(arr);
-    let calcOnePairResult = onePair(arr);
-    let calcTwoPairResult = twoPair(arr);
-    let calcThreeOfAKindResult = threeOfAKind(arr);
-    let calcFourOfAKindResult = fourOfAKind(arr);
-    let calcFullHouseResult = fullHouse(arr);
-    let calcChanceResult = chance(arr);
-    let calcBonusResult = bonus(arr);
-    let calcYatzyResult = yatzy(arr);
+let smallStraightResult = smallStraight(arr);
+let largeStraightResult = largeStraight(arr);
+let calcOnesResult = calcOnes(arr);
+let calcTwoesResult = calcTwoes(arr);
+let calcThreesResult = calcThrees(arr);
+let calcFoursResult = calcFours(arr);
+let calcFivesResult = calcFives(arr);
+let calcSixesResult = calcSixes(arr);
+let calcOnePairResult = onePair(arr);
+let calcTwoPairResult = twoPair(arr);
+let calcThreeOfAKindResult = threeOfAKind(arr);
+let calcFourOfAKindResult = fourOfAKind(arr);
+let calcFullHouseResult = fullHouse(arr);
+let calcChanceResult = chance(arr);
+let calcBonusResult = bonus(arr);
+let calcYatzyResult = yatzy(arr);
+//let calcSum = 
+
+let resultArray = [calcOnesResult, calcTwoesResult, calcThreesResult, calcFoursResult, calcFivesResult, calcSixesResult, calcBonusResult, calcOnePairResult,
+calcTwoPairResult, calcThreeOfAKindResult, calcFourOfAKindResult, smallStraightResult, largeStraightResult, calcFullHouseResult, calcChanceResult, calcYatzyResult];
 
 
-    //player1Array[0].value = 1;
 
+
+debugger;
+
+    for(let i = 0; i < resultArray.length; i++){
+        var x = document.getElementById("gameTable").rows[i+1].cells;
+        x[1].innerHTML = resultArray[i];
+    }
+
+ //let y = document.getElementById("gameTable").rows[1].cells.item(1).innerHTML; 
 
     
-    // player1Array.splice(0,1, calcOnesResult);
-    
+ //y = smallStraightResult; 
+
+ 
+
+
+
+    /*
+    player1Array.slice(0, 1, smallStraightResult);
+    td1.innerHTML = player1Array[0];
     
 
+   for (let i = 1; i < rowLength; i++) {
+    //let y = document.getElementById("gameTable").rows[i].cells.item(playerNumber).innerHTML;  
+
+
+   }
+
     
+
+    testArray.splice(0,1, 20);
+    debugger;
+
+    getPlayerPoints(); */
      
     return arr;
 }
