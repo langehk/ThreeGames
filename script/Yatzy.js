@@ -21,14 +21,6 @@ let lockedPlayer8Array = ["","","","","","","","","","","","","","","",""];
 let lockedPlayer9Array = ["","","","","","","","","","","","","","","",""];
 let lockedPlayer10Array = ["","","","","","","","","","","","","","","",""];
 
-
-
-/*
-a onclick = lock(){
-    lockedPlayer1Array.splice(5, 1, result);
-}
-*/
-
 //Terningen til et object
 class Die {
     constructor(value, isLocked) {
@@ -159,74 +151,6 @@ function swapTurn(){
     return playerTurn; 
 }
 
-/*
-let testArray = [];
-
-
-function getPlayerPoints(){
- 
-     // Længden på vores row.
-     let rowLength = document.getElementById("gameTable").rows.length;
- 
-     //Længden af antal celler - giver os antal af spillere
-     let cellLength = document.getElementById("gameTable").rows[0].cells.length - 1;
-     
-     /*
-     //Indsætter værdien fra cellerne ind i playerArray 
-     function createPlayerPointsArray(arr, playerNumber){
-         for (let i = 1; i < rowLength; i++) {
-             //let y = document.getElementById("gameTable").rows[i].cells.item(playerNumber).innerHTML;   
-             
-            if(arr[0])
-            {
-                arr.splice(1,1,calcOnes());
-            }
-
-             arr.push(y);
-             
-         }
-         console.log(arr);
-     }*/
- 
-/*
-     testArray = player1Array;
-
-     if(cellLength >= 1){
-         createPlayerPointsArray(player1Array, 1);
-     }
-     if(cellLength >= 2){
-         createPlayerPointsArray(player2Array, 2);
-     }
-     if(cellLength >= 3){
-         createPlayerPointsArray(player3Array, 3);
-     }
-     if(cellLength >= 4){
-         createPlayerPointsArray(player4Array, 4);
-     }
-     if(cellLength >= 5){
-         createPlayerPointsArray(player5Array, 5);
-     }
-     if(cellLength >= 6){
-         createPlayerPointsArray(player6Array, 6);
-     }
-     if(cellLength >= 7){
-         createPlayerPointsArray(player7Array, 7);
-     }
-     if(cellLength >= 8){
-         createPlayerPointsArray(player8Array, 8);
-     }
-     if(cellLength >= 9){
-         createPlayerPointsArray(player9Array, 9);
-     }
-     if(cellLength >= 10){
-         createPlayerPointsArray(player10Array, 10);
-     }
-    
-}
-
-function setPlayerPoints(){
-    
-}*/
 
 function lockResult(pointScore, rowNo, cellNo){
     rowNo = rowNo - 1;
@@ -273,20 +197,8 @@ function lockResult(pointScore, rowNo, cellNo){
                 
             }
         }
+
     }
-
-    /*
-    for(let i = 0; i < 17; i++)
-    {
-        let y = document.getElementById("gameTable").rows[i+1].cells;
-       
-        y[cellNo].innerHTML = "";
-    }*/
-
-
-  
-
-    //let x = document.getElementById("gameTable").rows[rowNo].cells;
 
 
 
@@ -294,21 +206,6 @@ function lockResult(pointScore, rowNo, cellNo){
     swapTurn();
     
 }
-
-
-
-/*
-
-         * Henter vores td1 array... og gemmer 
-        
-        let test = document.getElementsByClassName("td1");
-        let bla = test[0].innerHTML;
-        debugger;
-        lockedPlayer1Array.splice(0,1, bla);
-        
-        console.log(lockedPlayer1Array);
-        
-*/
 
 let noOfRolls = 1; 
 let rollButton = document.getElementById("rollDices");
