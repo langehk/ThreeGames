@@ -1,4 +1,5 @@
 'use strict'
+let playerName = prompt("Enter your name");
 
 var y = Math.floor( Math.random() * 1000 + 1 );
 console.log( y );
@@ -68,6 +69,7 @@ let correct = function () {
       .style.display = "none";
     document.getElementById( "tryAgainForm" )
       .style.display = "block";
+      createCookie(playerName, guess, 10);
   }
 }
 
