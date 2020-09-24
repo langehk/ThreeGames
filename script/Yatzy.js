@@ -10,16 +10,16 @@ let maxRolls = 3;
 let rolls = 0;
 
 //Player arrays, hvor vi kan smide deres point ind
-let player1Array = [];
-let player2Array = [];
-let player3Array = [];
-let player4Array = [];
-let player5Array = [];
-let player6Array = [];
-let player7Array = [];
-let player8Array = [];
-let player9Array = [];
-let player10Array = [];
+let lockedPlayer1Array = [];
+let lockedPlayer2Array = [];
+let lockedPlayer3Array = [];
+let lockedPlayer4Array = [];
+let lockedPlayer5Array = [];
+let lockedPlayer6Array = [];
+let lockedPlayer7Array = [];
+let lockedPlayer8Array = [];
+let lockedPlayer9Array = [];
+let lockedPlayer10Array = [];
 
 //Terningen til et object
 class Die {
@@ -95,7 +95,7 @@ function buildTablePointRow(table, data, players){
         
         
         for (let u = 1; u < players.length; u++) {
-            let str = document.createTextNode("t");
+            let str = document.createTextNode("");
             let x = row.insertCell();
             x.appendChild(str);
             x.className = "td" + u;
@@ -152,7 +152,7 @@ debugger;
     return playerTurn; 
 }
 
-
+/*
 let testArray = [];
 
 
@@ -181,6 +181,7 @@ function getPlayerPoints(){
          console.log(arr);
      }*/
  
+/*
      testArray = player1Array;
 
      if(cellLength >= 1){
@@ -218,7 +219,7 @@ function getPlayerPoints(){
 
 function setPlayerPoints(){
     
-}
+}*/
 
 
 
@@ -280,14 +281,16 @@ function rollDices(arr) {
         let resultArray = [calcOnesResult, calcTwoesResult, calcThreesResult, calcFoursResult, calcFivesResult, calcSixesResult, calcBonusResult, calcOnePairResult,
         calcTwoPairResult, calcThreeOfAKindResult, calcFourOfAKindResult, smallStraightResult, largeStraightResult, calcFullHouseResult, calcChanceResult, calcYatzyResult];
         
-        debugger;
         
         for(let i = 0; i < resultArray.length; i++)
         {
             var x = document.getElementById("gameTable").rows[i+1].cells;
             x[playerTurn].innerHTML = resultArray[i];
         }
+        
         noOfRolls++;
+
+
         return arr;
 
         }
