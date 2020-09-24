@@ -1,5 +1,7 @@
 "use strict";
 
+//Peter-Paul Kochs cookie library 
+
 function createCookie(name, value, days) {
     let expires;
     let samesite = "; sameSite=lax";            // nml
