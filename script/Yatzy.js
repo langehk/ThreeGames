@@ -77,11 +77,13 @@ function buildTablePointRow(table, data, players){
         
        
         let text = document.createTextNode(data[i]);
+        let str = document.createTextNode("t");
         cell.appendChild(text);
         
         for (let u = 1; u < players.length; u++) {
             
             let x = row.insertCell();
+            x.appendChild(str);
             x.className = "td" + u;
         }
     }
@@ -89,8 +91,11 @@ function buildTablePointRow(table, data, players){
 
 //Vi skyder cellerne fra vores table ind i arrays
 //Her kunne det være ideelt at have en dynamisk måde at opbygge disse arrays, så man ikke er begrænset 
-let player1Array = document.getElementsByClassName("td1");
+
+//var arr = Array.from(htmlCollection);
 debugger;
+let player1Array = [...document.getElementsByClassName("td2")];
+
 let player2Array = document.getElementsByClassName("td2");
 let player3Array = document.getElementsByClassName("td3");
 let player4Array = document.getElementsByClassName("td4");
@@ -100,6 +105,10 @@ let player7Array = document.getElementsByClassName("td7");
 let player8Array = document.getElementsByClassName("td8");
 let player9Array = document.getElementsByClassName("td9");
 let player10Array = document.getElementsByClassName("td10");
+
+/*for(let i = 0; i < player1Array.length; i++){
+    player1Array.push(document.getElementsByClassName("td1").item(i));
+}*/
 
 console.log("Player array: " + player1Array); //Denne returnerer en HTML Object collenction
 
@@ -124,6 +133,7 @@ let dice5  = new Die();
 dice5.value = 0;
 dice5.isLocked = false;
 
+//Terning-objekterne sættes ind i et array
 let diceArray = [dice1, dice2, dice3, dice4, dice5];
 
 //Funktion til at kaste med terningen
@@ -134,7 +144,6 @@ let play = function(){
 
 let playerTurn = 0;
 
-
 // Skifte tur for antal spillere
 document.getElementById("swapPlayer").onclick = function swapTurn(e){
     e = players;
@@ -142,12 +151,10 @@ document.getElementById("swapPlayer").onclick = function swapTurn(e){
     if(playerTurn == (e.length - 1)){
         playerTurn = 0; 
         playerTurn++; 
-        //console.log(players[playerTurn]);
         return e[playerTurn];
     }
-    playerTurn++;
-    //console.log(e[playerTurn]);
 
+    playerTurn++;
     return e[playerTurn]; 
 
 }
@@ -162,8 +169,6 @@ function rollDices(arr) {
             arr[i].value = play();
         }
     }
-    //console.log(arr);
-
     
     //Terningerne i HTML'en får skudt værdien ind    
     let dice1Value = document.getElementById("dice1");
