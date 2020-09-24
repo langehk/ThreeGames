@@ -10,16 +10,24 @@ let maxRolls = 3;
 let rolls = 0;
 
 //Player arrays, hvor vi kan smide deres point ind
-let lockedPlayer1Array = [];
-let lockedPlayer2Array = [];
-let lockedPlayer3Array = [];
-let lockedPlayer4Array = [];
-let lockedPlayer5Array = [];
-let lockedPlayer6Array = [];
-let lockedPlayer7Array = [];
-let lockedPlayer8Array = [];
-let lockedPlayer9Array = [];
-let lockedPlayer10Array = [];
+let lockedPlayer1Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer2Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer3Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer4Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer5Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer6Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer7Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer8Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer9Array = ["","","","","","","","","","","","","","","",""];
+let lockedPlayer10Array = ["","","","","","","","","","","","","","","",""];
+
+
+
+/*
+a onclick = lock(){
+    lockedPlayer1Array.splice(5, 1, result);
+}
+*/
 
 //Terningen til et object
 class Die {
@@ -136,11 +144,11 @@ let play = function(){
 let playerTurn = 1;
 
 // Skifte tur for antal spillere
-document.getElementById("swapPlayer").onclick = function swapTurn(e){
-    e = players;
+//document.getElementById("swapPlayer").onclick = function swapTurn(e){
+function swapTurn(){
+    let e = players;
     noOfRolls = 0; 
     rollButton.disabled = false; 
-debugger;
     if(playerTurn == (e.length - 1)){
         playerTurn = 0; 
         playerTurn++; 
@@ -148,7 +156,6 @@ debugger;
     }
 
     playerTurn++;
-    debugger;
     return playerTurn; 
 }
 
@@ -221,7 +228,87 @@ function setPlayerPoints(){
     
 }*/
 
+function lockResult(pointScore, rowNo, cellNo){
+    rowNo = rowNo - 1;
+    if(cellNo == 1){
+        debugger;
+        lockedPlayer1Array.splice(rowNo, 1, pointScore);
+        
+        console.log(lockedPlayer1Array);
 
+        for(let i = 1; i < 17; i++)
+        {
+            let x = document.getElementById("gameTable").rows[i+1].cells;
+           
+            x[cellNo].innerHTML = lockedPlayer1Array[i];
+            //x[cellNo].innerHTML = pointScore;
+            //x[cellNo].style.backgroundColor = "lightgrey";
+            
+            for (let i = 0; i < 17; i++) {
+                
+                let p = document.getElementById("gameTable").rows[i+1].cells;
+                p[cellNo].innerHTML = lockedPlayer1Array[i];
+                
+            }
+        }
+    }
+
+    if(cellNo == 2){
+        lockedPlayer2Array.splice(rowNo, 1, pointScore);
+        
+        console.log(lockedPlayer2Array);
+
+        for(let i = 1; i < 17; i++)
+        {
+            let x = document.getElementById("gameTable").rows[i+1].cells;
+           
+            x[cellNo].innerHTML = lockedPlayer2Array[i];
+            //x[cellNo].innerHTML = pointScore;
+            //x[cellNo].style.backgroundColor = "lightgrey";
+            
+            for (let i = 0; i < 17; i++) {
+                
+                let p = document.getElementById("gameTable").rows[i+1].cells;
+                p[cellNo].innerHTML = lockedPlayer2Array[i];
+                
+            }
+        }
+    }
+
+    /*
+    for(let i = 0; i < 17; i++)
+    {
+        let y = document.getElementById("gameTable").rows[i+1].cells;
+       
+        y[cellNo].innerHTML = "";
+    }*/
+
+
+  
+
+    //let x = document.getElementById("gameTable").rows[rowNo].cells;
+
+
+
+
+    swapTurn();
+    
+}
+
+
+
+/*
+
+         * Henter vores td1 array... og gemmer 
+        
+        let test = document.getElementsByClassName("td1");
+        let bla = test[0].innerHTML;
+        debugger;
+        lockedPlayer1Array.splice(0,1, bla);
+        
+        console.log(lockedPlayer1Array);
+        
+*/
 
 let noOfRolls = 1; 
 let rollButton = document.getElementById("rollDices");
@@ -235,7 +322,7 @@ function rollDices(arr) {
     }
     else
     {
-        debugger;
+        
         for (let i = 0; i < arr.length; i++) 
         {
             if(arr[i].isLocked == false){ //Hvis class er locked, så ruller terningen ikke
@@ -285,11 +372,14 @@ function rollDices(arr) {
         for(let i = 0; i < resultArray.length; i++)
         {
             var x = document.getElementById("gameTable").rows[i+1].cells;
-            x[playerTurn].innerHTML = resultArray[i];
+            x[playerTurn].innerHTML = `<a onclick="lockResult(${resultArray[i]}, ${i+1}, ${playerTurn})"> ${resultArray[i]} </a>`;
         }
-        
+
         noOfRolls++;
 
+
+        
+       
 
         return arr;
 
