@@ -15,8 +15,43 @@
       <a href="index.html">Home</a>
       <a href="guessNumber.html">Guess a number</a>
       <a href="hangMan.html">Hangman</a>
-      <a href="yatzee.html">Yatzee</a>
+      <a href="yatzy.html">Yatzy</a>
     </header>
+    <main>
+      <div id="gameStart">
+        <h2>Add player names</h2>
+        <input type="text" onfocus="this.value=''" id="addPlayer" />
+        <input type="submit" value="Add player" id="submitPlayer" />
+        <br>
+        <p id="addedPlayer"></p>
+        <button id="startGame">Start game</button>
+      </div>
+      <div id="game">
+        <h2>Roll dices, click on them to lock them</h2>
+        <div id="dices">
+          <div class="dice" id="dice1">
+          </div>
+          <div class="dice" id="dice2">
+          </div>
+          <div class="dice" id="dice3">
+          </div>
+          <div class="dice" id="dice4">
+          </div>
+          <div class="dice" id="dice5">
+          </div>
+        </div>
+        <button id="rollDices">Roll dices</button>
+
+        <div id="points">
+          <table id="gameTable">
+          </table>
+        </div>
+      </div>
+    </main>
+    
+    <script src="script/YaztyCalc.js"></script>
+    <script src="script/Yatzy.js"></script>
+    
   </body>
 
 </html>
