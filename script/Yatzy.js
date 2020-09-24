@@ -70,6 +70,7 @@ function buildTableHead(table, data)
 //Vi bygger table rækker inkl. point og tomme felter under spillere
 function buildTablePointRow(table, data, players){
     
+
     for(let i = 0; i < data.length; i++)
     {
         let row = table.insertRow();
@@ -77,11 +78,11 @@ function buildTablePointRow(table, data, players){
         
        
         let text = document.createTextNode(data[i]);
-        let str = document.createTextNode("t");
+        
         cell.appendChild(text);
         
         for (let u = 1; u < players.length; u++) {
-            
+            let str = document.createTextNode("t");
             let x = row.insertCell();
             x.appendChild(str);
             x.className = "td" + u;
