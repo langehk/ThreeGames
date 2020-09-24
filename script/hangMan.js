@@ -1,3 +1,5 @@
+let playerName = prompt("Enter your name:");
+
 let alphabet = [
   "a",
   "b",
@@ -119,7 +121,12 @@ function updateLives() {
 
   if (currentLives < 1) {
     livesText.innerHTML = "Game over!";
+    alert("Game over!");
+
+    newGame();
   }
+
+  
 
   displayGuesses.innerHTML = guesses; // Viser hvilke bogstaver vi har anvendt.
 }
@@ -170,6 +177,7 @@ Og returnerer bogstavet.
 - Check om array indeholder bogstavet som vi trykker på
 */
 function checkLetter(element) {
+  
   let guess = element.srcElement.innerText;
   element.srcElement.disabled = true;
 
@@ -178,6 +186,8 @@ function checkLetter(element) {
     alert("You've already used the letter: " + guess);
     return null;
   }
+
+  
   /**
    * Checker om bogstavet findes i vores array.
    * + Erstatter _ med det indtastede bogstav (guess)
@@ -197,4 +207,38 @@ function checkLetter(element) {
   guesses.push(guess);
   setText("hangManWord", globalHiddenArray.join(" "));
   updateLives();
+
+
+  checkArrayAndWin(globalHiddenArray, wordArray);
+
+
+  
+
+
 }
+
+let win = "win";
+
+let checkArrayAndWin = function(arr1, arr2) {
+  // Check if the arrays are the same length
+	if (arr1.length !== arr2.length) {
+    return false;
+  }
+  
+	// Check if all items exist and are in the same order
+	for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) 
+    return false;
+  }
+  if(arr1.length == arr2.length)
+  {
+    alert("You Win!");
+    createCookie(playerName, currentLives, 10);
+
+  }
+  
+  return true;
+  }
+
+
+ 
