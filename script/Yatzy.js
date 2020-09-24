@@ -133,11 +133,13 @@ let play = function(){
     
 }
 
-let playerTurn = 0;
+let playerTurn = 1;
 
 // Skifte tur for antal spillere
 document.getElementById("swapPlayer").onclick = function swapTurn(e){
     e = players;
+    noOfRolls = 0; 
+    rollButton.disabled = false; 
 debugger;
     if(playerTurn == (e.length - 1)){
         playerTurn = 0; 
@@ -146,8 +148,8 @@ debugger;
     }
 
     playerTurn++;
-    return e[playerTurn]; 
-
+    debugger;
+    return playerTurn; 
 }
 
 
@@ -220,93 +222,76 @@ function setPlayerPoints(){
 
 
 
-
+let noOfRolls = 1; 
+let rollButton = document.getElementById("rollDices");
 
 // Rolls 5 dices
 function rollDices(arr) {
 
-    for (let i = 0; i < arr.length; i++) {
-        if(arr[i].isLocked == false){ //Hvis class er locked, så ruller terningen ikke
-            arr[i].value = play();
+    if(noOfRolls > maxRolls)
+    {
+        rollButton.disabled = true; 
+    }
+    else
+    {
+        debugger;
+        for (let i = 0; i < arr.length; i++) 
+        {
+            if(arr[i].isLocked == false){ //Hvis class er locked, så ruller terningen ikke
+                arr[i].value = play();
+            }
         }
-    }
+        
+        //Terningerne i HTML'en får skudt værdien ind    
+        let dice1Value = document.getElementById("dice1");
+        dice1Value.innerHTML = dice1.value; 
     
-    //Terningerne i HTML'en får skudt værdien ind    
-    let dice1Value = document.getElementById("dice1");
-    dice1Value.innerHTML = dice1.value; 
-
-    let dice2Value = document.getElementById("dice2");
-    dice2Value.innerHTML = dice2.value; 
-
-    let dice3Value = document.getElementById("dice3");
-    dice3Value.innerHTML = dice3.value; 
-
-    let dice4Value = document.getElementById("dice4");
-    dice4Value.innerHTML = dice4.value; 
-
-    let dice5Value = document.getElementById("dice5");
-    dice5Value.innerHTML = dice5.value; 
-
-    //Vi udregner de forskellige pointmuligheder
-let smallStraightResult = smallStraight(arr);
-let largeStraightResult = largeStraight(arr);
-let calcOnesResult = calcOnes(arr);
-let calcTwoesResult = calcTwoes(arr);
-let calcThreesResult = calcThrees(arr);
-let calcFoursResult = calcFours(arr);
-let calcFivesResult = calcFives(arr);
-let calcSixesResult = calcSixes(arr);
-let calcOnePairResult = onePair(arr);
-let calcTwoPairResult = twoPair(arr);
-let calcThreeOfAKindResult = threeOfAKind(arr);
-let calcFourOfAKindResult = fourOfAKind(arr);
-let calcFullHouseResult = fullHouse(arr);
-let calcChanceResult = chance(arr);
-let calcBonusResult = bonus(arr);
-let calcYatzyResult = yatzy(arr);
-//let calcSum = 
-
-let resultArray = [calcOnesResult, calcTwoesResult, calcThreesResult, calcFoursResult, calcFivesResult, calcSixesResult, calcBonusResult, calcOnePairResult,
-calcTwoPairResult, calcThreeOfAKindResult, calcFourOfAKindResult, smallStraightResult, largeStraightResult, calcFullHouseResult, calcChanceResult, calcYatzyResult];
-
-
-
-
-debugger;
-
-    for(let i = 0; i < resultArray.length; i++){
-        var x = document.getElementById("gameTable").rows[i+1].cells;
-        x[1].innerHTML = resultArray[i];
-    }
-
- //let y = document.getElementById("gameTable").rows[1].cells.item(1).innerHTML; 
-
+        let dice2Value = document.getElementById("dice2");
+        dice2Value.innerHTML = dice2.value; 
     
- //y = smallStraightResult; 
-
- 
-
-
-
-    /*
-    player1Array.slice(0, 1, smallStraightResult);
-    td1.innerHTML = player1Array[0];
+        let dice3Value = document.getElementById("dice3");
+        dice3Value.innerHTML = dice3.value; 
     
-
-   for (let i = 1; i < rowLength; i++) {
-    //let y = document.getElementById("gameTable").rows[i].cells.item(playerNumber).innerHTML;  
-
-
-   }
-
+        let dice4Value = document.getElementById("dice4");
+        dice4Value.innerHTML = dice4.value; 
     
+        let dice5Value = document.getElementById("dice5");
+        dice5Value.innerHTML = dice5.value; 
+    
+        //Vi udregner de forskellige pointmuligheder
+        let smallStraightResult = smallStraight(arr);
+        let largeStraightResult = largeStraight(arr);
+        let calcOnesResult = calcOnes(arr);
+        let calcTwoesResult = calcTwoes(arr);
+        let calcThreesResult = calcThrees(arr);
+        let calcFoursResult = calcFours(arr);
+        let calcFivesResult = calcFives(arr);
+        let calcSixesResult = calcSixes(arr);
+        let calcOnePairResult = onePair(arr);
+        let calcTwoPairResult = twoPair(arr);
+        let calcThreeOfAKindResult = threeOfAKind(arr);
+        let calcFourOfAKindResult = fourOfAKind(arr);
+        let calcFullHouseResult = fullHouse(arr);
+        let calcChanceResult = chance(arr);
+        let calcBonusResult = bonus(arr);
+        let calcYatzyResult = yatzy(arr);
+        //let calcSum = 
+        
+        let resultArray = [calcOnesResult, calcTwoesResult, calcThreesResult, calcFoursResult, calcFivesResult, calcSixesResult, calcBonusResult, calcOnePairResult,
+        calcTwoPairResult, calcThreeOfAKindResult, calcFourOfAKindResult, smallStraightResult, largeStraightResult, calcFullHouseResult, calcChanceResult, calcYatzyResult];
+        
+        debugger;
+        
+        for(let i = 0; i < resultArray.length; i++)
+        {
+            var x = document.getElementById("gameTable").rows[i+1].cells;
+            x[playerTurn].innerHTML = resultArray[i];
+        }
+        noOfRolls++;
+        return arr;
 
-    testArray.splice(0,1, 20);
-    debugger;
-
-    getPlayerPoints(); */
-     
-    return arr;
+        }
+        
 }
 
 /**
@@ -346,6 +331,3 @@ document.getElementById("dice4").onclick = function(){
 document.getElementById("dice5").onclick = function(){ 
     lockDice(dice5); 
 }
-
-
-
