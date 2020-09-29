@@ -1,10 +1,12 @@
 'use strict'
+import {createCookie} from '/script/cookies.js';
+
 let playerName = prompt("Enter your name");
 
-var y = Math.floor( Math.random() * 1000 + 1 );
+let y = Math.floor( Math.random() * 1000 + 1 );
 console.log( y );
 
-var guess = 0;
+let guess = 0;
 
 // Functions
 
@@ -93,3 +95,5 @@ let result = function () {
 
   }
 }
+
+export{result, tryAgain, guess}; 

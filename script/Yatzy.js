@@ -1,6 +1,22 @@
-'use strict'
 
 
+import {
+    calcOnes, 
+    calcTwoes, 
+    calcThrees, 
+    calcFours, 
+    calcFives, 
+    calcSixes, 
+    onePair, 
+    twoPair, 
+    threeOfAKind, 
+    fourOfAKind, 
+    fullHouse, 
+    smallStraight, 
+    largeStraight, 
+    bonus, 
+    chance, 
+    yatzy} from '/script/YatzyCalc.js';
 
 let players = [""];
 let points = ["Ones", "Twoes", "Threes", "Fours", "Fives", "Sixes", "Bonus", "One pair", "Two pairs", "Three of a kind", 
@@ -151,11 +167,14 @@ function swapTurn(){
     return playerTurn; 
 }
 
+function test(){
+    console.log("test");
+}
 
-function lockResult(pointScore, rowNo, cellNo){
+let lockResult = function(pointScore, rowNo, cellNo){
     rowNo = rowNo - 1;
     if(cellNo == 1){
-        debugger;
+        
         lockedPlayer1Array.splice(rowNo, 1, pointScore);
         
         console.log(lockedPlayer1Array);
@@ -268,15 +287,20 @@ function rollDices(arr) {
         
         for(let i = 0; i < resultArray.length; i++)
         {
-            var x = document.getElementById("gameTable").rows[i+1].cells;
-            x[playerTurn].innerHTML = `<a onclick="lockResult(${resultArray[i]}, ${i+1}, ${playerTurn})"> ${resultArray[i]} </a>`;
+            let y = i+1;
+            
+            let x = document.getElementById("gameTable").rows[y].cells;
+
+           x[playerTurn].innerHTML = resultArray[i];
+           x[playerTurn].addEventListener("click", function() {
+               lockResult(resultArray[i], y, playerTurn);
+            });
+           
+            
         }
 
         noOfRolls++;
 
-
-        
-       
 
         return arr;
 
@@ -321,3 +345,4 @@ document.getElementById("dice4").onclick = function(){
 document.getElementById("dice5").onclick = function(){ 
     lockDice(dice5); 
 }
+

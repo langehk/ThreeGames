@@ -1,3 +1,6 @@
+'use strict';
+
+import{tryAgain, result, guess} from '/script/guessNumber.js'; 
 
   document.getElementById("guesses").innerHTML = 'number of guesses: ' + guess;
 

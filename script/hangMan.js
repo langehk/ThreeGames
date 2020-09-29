@@ -1,3 +1,7 @@
+'use strict';
+
+import {createCookie} from '/script/cookies.js';
+
 let playerName = prompt("Enter your name:");
 
 let alphabet = [
@@ -135,13 +139,13 @@ function updateLives() {
 Laver en <ul> med alle input på tastaturet.
 */
 function loadKeyboard() {
-  myKeyboard = document.getElementById("keyboard");
-  letters = document.createElement("ul");
+  let myKeyboard = document.getElementById("keyboard");
+  let letters = document.createElement("ul");
 
   for (let i = 0; i < alphabet.length; i++) {
     letters.id = "alphabet";
 
-    list = document.createElement("button");
+    let list = document.createElement("button");
     list.classList.add("letter"); //Laver et id til hver knap, så vi kan fange den senere.
     list.innerHTML = alphabet[i]; //Angiver bogstav til hver "button" element.
     myKeyboard.appendChild(letters); //Sætter vores "letters" ind i keyboard div.

@@ -1,4 +1,3 @@
-'use strict'
 
 let ones = 0;
     let twoes = 0;
@@ -402,3 +401,5 @@ let values = arr.map(a => a.value);
     return points;
 
 }
+
+export {calcOnes, calcTwoes, calcThrees, calcFours, calcFives, calcSixes, onePair, twoPair, threeOfAKind, fourOfAKind, fullHouse, smallStraight, largeStraight, bonus, chance, yatzy};

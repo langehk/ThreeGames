@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 //Peter-Paul Kochs cookie library 
 
@@ -34,3 +34,5 @@ function readCookie(name) {
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
+
+export {createCookie};
